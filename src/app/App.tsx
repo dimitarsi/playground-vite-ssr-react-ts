@@ -5,7 +5,7 @@ export const App: FC = ({ children }) => {
   return (
     <Switch>
       <Route path="/" exact>
-        <div>Homepage</div>
+        <div>Home Page</div>
       </Route>
       <Route path="*">
         <div>404</div>

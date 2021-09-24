@@ -1,9 +1,10 @@
-import fs from "fs";
-import path from "path";
-import express from "express";
-import { createServer } from "vite";
+const fs = require("fs");
+const path = require("path");
+const express = require("express");
+const { createServer } = require("vite");
+const { SSR_PLACEHOLDER } = require("./constants.js");
 
-async function createExpressServer() {
+async function createDevServer() {
   const app = express();
 
   const vite = await createServer({
@@ -21,7 +22,7 @@ async function createExpressServer() {
         "./src/server/server-entry.tsx"
       );
       const appHtml = await render(url);
-      const html = template.replace(`<!--ssr-outlet-->`, appHtml);
+      const html = template.replace(SSR_PLACEHOLDER, appHtml);
 
       res
         .status(200)
@@ -37,7 +38,9 @@ async function createExpressServer() {
     }
   });
 
-  app.listen(3000, () => console.log("Express is listening on localhost:3000"));
+  app.listen(3000, () =>
+    console.log("Dev server started on http://localhost:3000")
+  );
 }
 
-createExpressServer();
+createDevServer();
