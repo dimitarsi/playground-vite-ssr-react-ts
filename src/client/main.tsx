@@ -2,9 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "../app/App";
 
-ReactDOM.render(
+const root = document.getElementById("root");
+
+const app = (
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+    <App>{location.pathname}</App>
+  </React.StrictMode>
 );
+
+if (root?.innerHTML) {
+  ReactDOM.hydrate(app, root);
+} else {
+  ReactDOM.render(app, root);
+}
