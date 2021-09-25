@@ -1,15 +1,27 @@
-import { FC, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { FC } from "react";
+import { Switch, Route, Link } from "react-router-dom";
+import loadable from "@loadable/component";
+
+const HomePageLazy = loadable(() => import("./components/pages/Home/HomePage"));
+const NotFoundLazy = loadable(
+  () => import("./components/pages/NotFound/404Page")
+);
 
 export const App: FC = ({ children }) => {
   return (
-    <Switch>
-      <Route path="/" exact>
-        <div>Home Page</div>
-      </Route>
-      <Route path="*">
-        <div>404</div>
-      </Route>
-    </Switch>
+    <>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/missing">404</Link>
+      </nav>
+      <Switch>
+        <Route path="/" exact>
+          <HomePageLazy />
+        </Route>
+        <Route path="*">
+          <NotFoundLazy />
+        </Route>
+      </Switch>
+    </>
   );
 };
