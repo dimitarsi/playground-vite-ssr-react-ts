@@ -12,14 +12,16 @@ async function createDevServer() {
   });
 
   app.use(vite.middlewares);
-
   app.use("*", async (req, res) => {
     const url = req.originalUrl;
     try {
       let template = fs.readFileSync(path.resolve("./index.html"), "utf-8");
       template = await vite.transformIndexHtml(url, template);
       const { render } = await vite.ssrLoadModule(
-        "./src/server/server-entry.tsx"
+        "./src/server/server-entry.tsx",
+        {
+          isolated: false,
+        }
       );
       const appHtml = await render(url);
       const html = template.replace(SSR_PLACEHOLDER, appHtml);

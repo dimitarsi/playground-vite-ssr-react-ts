@@ -8,6 +8,7 @@
     "serve": "vite preview",
     "build:client": "vite build --outDir ./dist/client",
     "build:server": "vite build --outDir ./dist/server --ssr src/server/server-entry.tsx",
+    "build:sw": "vite build --config vite-sw.config.js --outDir ./dist/sw",
     "start:prod": "node ./src/server/prod.js"
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "@types/express": "^4.17.13",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.3.0",
     "@vitejs/plugin-react": "^1.0.0",
     "prettier": "^2.4.1",
     "ts-node": "^10.2.1",
