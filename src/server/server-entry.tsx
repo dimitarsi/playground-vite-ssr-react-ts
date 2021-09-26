@@ -1,4 +1,3 @@
-import React from "react";
 import { App } from "../app/App";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
