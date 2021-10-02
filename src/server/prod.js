@@ -15,6 +15,7 @@ async function createProdServer() {
 
   app.use(compression());
   app.use(express.static("./dist/client", { index: false }));
+  app.use(express.static("./public"));
   app.get("/sw.js", (req, res) => {
     res.sendFile(path.join(__dirname, "../../dist/sw/sw.js"));
   });

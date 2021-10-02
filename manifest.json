@@ -1,0 +1,40 @@
+{
+  "short_name": "App Template",
+  "name": "Generic App Template",
+  "icons": [
+    {
+      "src": "/icons/maskable-480x480.svg",
+      "type": "image/svg",
+      "sizes": "480x480"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#3367D6",
+  "shortcuts": [
+    {
+      "name": "Mission",
+      "short_name": "Mission",
+      "description": "Our mission",
+      "url": "/about?source=pwa",
+      "icons": [{ "src": "/icons/maskable-480x480.svg", "sizes": "480x480" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Send inquiries",
+      "url": "/contact?source=pwa",
+      "icons": [{ "src": "/icons/maskable-480x480.svg", "sizes": "480x480" }]
+    }
+  ],
+  "description": "Generic App Description",
+  "screenshots": [
+    {
+      "src": "/images/screenshot-390x590.png",
+      "type": "image/png",
+      "sizes": "390x590"
+    }
+  ]
+}
