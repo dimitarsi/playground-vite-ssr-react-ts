@@ -10,7 +10,8 @@
     "build:server": "vite build --outDir ./dist/server --ssr src/server/server-entry.tsx",
     "build:all": "yarn build:client && yarn build:server",
     "start:prod": "node ./src/server/prod.js",
-    "run:build": "yarn build:all && yarn start:prod"
+    "run:build": "yarn build:all && yarn start:prod",
+    "chrome:dev": "chrome --unsafely-treat-insecure-origin-as-secure=https://localhost:3443 https://localhost:3443"
   },
   "dependencies": {
     "@loadable/component": "^5.15.0",
