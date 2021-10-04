@@ -1,29 +1,33 @@
 {
-  "name": "hello-world",
+  "name": "vite-experiment-ts",
   "version": "0.0.0",
   "scripts": {
     "vite-dev": "vite",
     "dev": "node ./src/server/dev.js",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "build:client": "vite build --config vite-client.config.ts --outDir ./dist/client",
+    "build:client": "vite build --config vite-client.config.ts --outDir ./dist/client --ssrManifest",
     "build:server": "vite build --outDir ./dist/server --ssr src/server/server-entry.tsx",
     "build:all": "yarn build:client && yarn build:server",
-    "start:prod": "node ./src/server/prod.js",
+    "start": "node ./src/server/prod.js",
     "run:build": "yarn build:all && yarn start:prod",
     "chrome:dev": "chrome --unsafely-treat-insecure-origin-as-secure=https://localhost:3443 https://localhost:3443"
   },
   "dependencies": {
-    "@loadable/component": "^5.15.0",
-    "@loadable/server": "^5.15.1",
+    "@loadable/component": "5.15.0",
+    "@loadable/server": "5.15.0",
+    "classnames": "^2.3.1",
     "compression": "^1.7.4",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "normalize.css": "^8.0.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^5.3.0"
   },
   "devDependencies": {
+    "@loadable/babel-plugin": "^5.13.2",
+    "@rollup/plugin-babel": "^5.3.0",
     "@types/express": "^4.17.13",
     "@types/loadable__component": "^5.13.4",
     "@types/react": "^17.0.0",

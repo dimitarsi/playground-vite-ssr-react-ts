@@ -1,11 +1,14 @@
-import { DOMAttributes, FC } from "react";
+import { FC, HTMLAttributes } from "react";
+import styles from "./container.module.css";
+import cn from "classnames";
 
-export const Container: FC<DOMAttributes<HTMLDivElement>> = ({
+export const Container: FC<HTMLAttributes<HTMLDivElement>> = ({
   children,
+  className,
   ...props
 }) => {
   return (
-    <div className="container" {...props}>
+    <div className={cn(className, styles.container)} {...props}>
       {children}
     </div>
   );

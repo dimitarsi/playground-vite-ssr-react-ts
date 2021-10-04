@@ -1,4 +1,4 @@
-import { App } from "../app/App";
+import { App } from "../app/App.Server";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 

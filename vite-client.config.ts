@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import { ManifestOptions, VitePWA } from "vite-plugin-pwa";
 import react from "@vitejs/plugin-react";
+import babel from "@rollup/plugin-babel";
 
 const manifest: Partial<ManifestOptions> = {
   short_name: "App Template",
@@ -54,9 +55,12 @@ export default defineConfig({
   build: {
     minify: false,
     rollupOptions: {
-      output: {
-        // format: "esm",
-      },
+      plugins: [
+        babel({
+          babelHelpers: "bundled",
+          plugins: ["@loadable/babel-plugin"],
+        }),
+      ],
     },
   },
 });

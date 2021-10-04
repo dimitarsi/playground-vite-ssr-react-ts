@@ -1,0 +1,20 @@
+:root {
+  --nav-background: #111;
+  --link-color: #01bcf6;
+}
+
+.nav {
+  width: 100%;
+  padding: 6px 16px;
+  box-sizing: border-box;
+  background: var(--nav-background);
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  margin-right: 16px;
+  font-size: 24px;
+  color: var(--link-color);
+  text-decoration: none;
+}
