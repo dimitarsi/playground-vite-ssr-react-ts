@@ -23,15 +23,20 @@ async function createDevServer() {
           isolated: false,
         }
       );
-      const appHtml = await render(url);
+      const context = {};
+      const appHtml = await render(url, req.cookies, context);
       const html = template.replace(SSR_PLACEHOLDER, appHtml);
 
-      res
-        .status(200)
-        .set({
-          "Content-Type": "text/html",
-        })
-        .end(html);
+      if (context.url) {
+        res.redirect(context.url);
+      } else {
+        res
+          .status(200)
+          .set({
+            "Content-Type": "text/html",
+          })
+          .end(html);
+      }
     } catch (e) {
       // hmm, probably fs error
       vite.ssrFixStacktrace(e);

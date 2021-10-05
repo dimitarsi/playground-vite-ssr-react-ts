@@ -4,13 +4,12 @@
   "scripts": {
     "vite-dev": "vite",
     "dev": "node ./src/server/dev.js",
-    "build": "tsc && vite build",
     "serve": "vite preview",
     "build:client": "vite build --config vite-client.config.ts --outDir ./dist/client --ssrManifest",
     "build:server": "vite build --outDir ./dist/server --ssr src/server/server-entry.tsx",
-    "build:all": "yarn build:client && yarn build:server",
+    "build": "yarn build:client && yarn build:server",
     "start": "node ./src/server/prod.js",
-    "run:build": "yarn build:all && yarn start",
+    "run:build": "yarn build && yarn start",
     "chrome:dev": "chrome --unsafely-treat-insecure-origin-as-secure=https://localhost:3443 https://localhost:3443"
   },
   "dependencies": {

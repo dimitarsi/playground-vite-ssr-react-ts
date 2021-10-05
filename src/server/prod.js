@@ -18,10 +18,20 @@ async function createProdServer() {
   app.use(express.static("./dist/client", { index: false }));
   app.use(express.static("./public"));
   app.use("*", (req, res) => {
-    const appHtml = ssrEntry.render(req.url);
+    const context = {};
+    const appHtml = ssrEntry.render(
+      req.originalUrl,
+      req.headers.cookie,
+      context
+    );
     const response = template.replace(SSR_PLACEHOLDER, appHtml);
-    res.set("Content-Type", "text/html");
-    res.send(response);
+
+    if (context.url) {
+      res.redirect(context.url);
+    } else {
+      res.set("Content-Type", "text/html");
+      res.send(response);
+    }
   });
 
   https(app);
