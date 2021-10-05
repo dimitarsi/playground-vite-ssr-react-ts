@@ -55,12 +55,7 @@ export default defineConfig({
   build: {
     minify: false,
     rollupOptions: {
-      plugins: [
-        babel({
-          babelHelpers: "bundled",
-          plugins: ["@loadable/babel-plugin"],
-        }),
-      ],
+      plugins: [],
     },
   },
 });
