@@ -1,25 +1,20 @@
 import { FC, StrictMode } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import Navigation from "./components/molecules/Navigation/Navigation";
+import routes from "./routes";
 
-import style from "./app.module.css";
-
-import HomePage from "./components/pages/Home/HomePage";
-import NotFound from "./components/pages/NotFound/404Page";
-
-export const App: FC = ({ children }) => {
+export const App = () => {
   return (
     <StrictMode>
-      <nav className={style.nav}>
-        <Link to="/">Home</Link>
-        <Link to="/missing">404</Link>
-      </nav>
+      <Navigation />
       <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
+        {Object.entries(routes).map(([key, Component]) => {
+          return (
+            <Route key={key} path={key} exact={key === "/"}>
+              <Component />
+            </Route>
+          );
+        })}
       </Switch>
     </StrictMode>
   );
